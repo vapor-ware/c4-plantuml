@@ -35,7 +35,7 @@ pipeline {
     }
     stage('Build Latest') {
       when {
-        Branch 'master'
+        branch 'master'
       }
       steps {
         withDockerRegistry(registry: [credentialsId: 'vio-docker-hub']) {
