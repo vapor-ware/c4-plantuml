@@ -12,4 +12,4 @@ RUN apt-get update && apt-get install -y \
 VOLUME /localhost
 WORKDIR /localhost
 
-ENTRYPOINT ["java", "-Djava.awt.headless=true", "-jar", "/plantuml.jar", "-tsvg", '*.puml']
+ENTRYPOINT ["java", "-Djava.awt.headless=true", "-jar", "/plantuml.jar", "-tsvg", '*.wasd']

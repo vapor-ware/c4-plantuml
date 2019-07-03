@@ -12,9 +12,9 @@ batches.
 docker run --rm -ti -v $PWD:/localhost vaporio/plantuml-c4:latest
 ```
 
-Presuming `$PWD` contains all the .PUML files you wish to generate.
+Presuming `$PWD` contains all the `.wasd` files you wish to generate.
 
-### Example PUML
+### Example wasd
 
 ```
 @startuml
