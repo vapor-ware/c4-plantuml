@@ -1,0 +1,49 @@
+#!/usr/bin/env groovy
+
+def getTagName() {
+	return "${env.BRANCH_NAME}".replace('/', '-')
+}
+
+pipeline {
+
+  agent any
+  triggers {
+    upstream(upstreamProjects: 'vapor-ware/foundations/master', threshold: hudson.model.Result.SUCCESS)
+  }
+
+  environment {
+    IMAGE = 'vaporio/plantuml-c4'
+    TAG = getTagName()
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+    stage('Build Tagged Release') {
+      when {
+        buildingTag()
+      }
+      steps {
+        withDockerRegistry(registry: [credentialsId: 'vio-docker-hub']) {
+          sh 'docker build . -t ${IMAGE}:${TAG}'
+          sh 'docker push ${IMAGE}:latest'
+        }
+      }
+    }
+    stage('Build Latest') {
+      when {
+        Branch 'master'
+      }
+      steps {
+        withDockerRegistry(registry: [credentialsId: 'vio-docker-hub']) {
+          sh 'docker build . -t ${IMAGE}:latest'
+          sh 'docker push ${IMAGE}:latest'
+        }
+      }
+    }
+
+  }
+}
