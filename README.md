@@ -1,10 +1,12 @@
-#C4 PlantUML
+# PlantUML 
+
+## supercharged with 12 C4 vitamins and essential nutrients
 
 Run C4PlantUML diagram generation in a container. Built from the `vaporio/foundation`
 base image, it is capable of generating any PlantUML or C4 PlantUML diagrams in
 batches.
 
-## Usage
+### Usage
 
 ```
 docker run --rm -ti -v $PWD:/localhost vaporio/plantuml-c4:latest
@@ -12,7 +14,7 @@ docker run --rm -ti -v $PWD:/localhost vaporio/plantuml-c4:latest
 
 Presuming `$PWD` contains all the .PUML files you wish to generate.
 
-## Example PUML
+### Example PUML
 
 ```
 @startuml
