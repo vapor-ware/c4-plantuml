@@ -1,4 +1,4 @@
-# PlantUML 
+# PlantUML
 
 ## supercharged with 12 C4 vitamins and essential nutrients
 
@@ -9,7 +9,7 @@ batches.
 ### Usage
 
 ```
-docker run --rm -ti -v $PWD:/localhost vaporio/plantuml-c4:latest
+docker run --rm -ti -e FORMAT=png -v $PWD:/localhost vaporio/plantuml-c4:latest
 ```
 
 Presuming `$PWD` contains all the `.wasd` files you wish to generate.

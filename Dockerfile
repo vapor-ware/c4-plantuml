@@ -12,4 +12,6 @@ RUN apt-get update && apt-get install -y \
 VOLUME /localhost
 WORKDIR /localhost
 
-ENTRYPOINT ["/usr/bin/java", "-Djava.awt.headless=true", "-jar", "/plantuml.jar", "-tsvg", "*.wsd"]
+ENV FORMAT="svg"
+
+ENTRYPOINT /usr/bin/java -Djava.awt.headless=true -jar /plantuml.jar -t${FORMAT} *.wsd
